@@ -16,3 +16,10 @@ docker-composeにてrails6とmysql8を使った構成テンプレート
 
 ### viewは欲しい場合
 `docker-compose run web bundle exec rails new . -d mysql`
+
+### database.yml書き換え（mysqlバージョン）
+`username: root`
+`password: root`
+`host: db`
+
+
