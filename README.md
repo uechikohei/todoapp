@@ -1,25 +1,24 @@
-# docker-rails6-mysql8
-docker-composeにてrails6とmysql8を使った構成テンプレート
+# README
 
-## 以下手順
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-### まずビルド
-`docker-compose build`
+Things you may want to cover:
 
-### バックグラウンドでwebを起動
-`docker-compose up -d`
+* Ruby version
 
-### apiモードでrails new! (viewが作成されなくなる)
-`docker-compose run web bundle exec rails new . -d mysql --api`
+* System dependencies
 
-*webとは、コンテナ名のこと。これを指定しないとエラーが出る。bundleやrailsがありませんと。
+* Configuration
 
-### viewは欲しい場合
-`docker-compose run web bundle exec rails new . -d mysql`
+* Database creation
 
-### database.yml書き換え（mysqlバージョン）
-`username: root`
-`password: root`
-`host: db`
+* Database initialization
 
+* How to run the test suite
 
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
