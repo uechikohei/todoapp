@@ -5,8 +5,13 @@
 
  説明 >> listsテーブルに -- 1.descriptionカラムにはstring型のデータが入る。 2.completed:booleanが入る。
  
+ ## boolean偽の追加
+ 
+  `, default: false`  
+ 説明　>> t.boolean :completedに対して[デフォルト:偽]を与える。
+ 
  ## データベースの作成
- `, default: false`  説明　>> t.boolean :completedに対して[デフォルト:偽]を与える。
+
  `bundle exec rails db:migrate`
  
  ## gem:webpackerの導入(rails6でのjs管理に必要。rails5では不必要。多少デプロイ時に重くなるね。)
