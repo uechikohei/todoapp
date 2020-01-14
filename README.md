@@ -21,8 +21,10 @@
  ## bootstrap導入
  インストール(webpacker使用)  => `yarn add bootstrap jquery popper.js`
  
-   ###  webpacker設定
- config/webpack/environment.js => `const webpack = require('webpack')
+   ###  webpacker設定追記していく内容
+ config/webpack/environment.jsに追記　↓
+ 
+ `const webpack = require('webpack')
 environment.plugins.prepend(
   'Provide',
   new webpack.ProvidePlugin({
@@ -31,8 +33,15 @@ environment.plugins.prepend(
     Popper: 'popper.js'
   })
 )`
-app/javascrip/src/application.scss => `@import '~bootstrap/scss/bootstrap';`
-app/javascrip/packs/application.js => `import 'bootstrap';
+
+app/javascrip/src/application.scssに追記　↓
+
+`@import '~bootstrap/scss/bootstrap';`
+
+app/javascrip/packs/application.jsに追記　↓
+
+`import 'bootstrap';
 import '../stylesheets/application';`
 
 app/views/layouts/application.html.erb => `pack_tag`に変更
+
