@@ -187,3 +187,14 @@ mysql2へと変更した設定を反映させる。
 
 ## URLへアクセス
 `heroku open`
+
+### 参考
+
+herokuデプロイについて
+https://qiita.com/chihiro/items/5c3ff400f6cb99deb945
+
+丁寧なherokuデプロイについて
+https://qiita.com/chihiro/items/5c3ff400f6cb99deb945
+
+mysql2追加について
+https://qiita.com/murakami-mm/items/9587e21fc0ed57c803d0
