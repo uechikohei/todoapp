@@ -55,3 +55,135 @@ import '../stylesheets/application';`
 
 app/views/layouts/application.html.erb => `pack_tag`に変更
 
+
+
+# herokuへpush(rails6 + mysql2環境)
+
+   ### herokuへの登録が必要
+   => https://jp.heroku.com/
+
+   ### herokuへクレジットカード情報登録
+   => account settingからクレジット情報と住所の登録
+
+
+## homebrewでインストール
+
+`brew install heroku/brew/heroku`
+
+`heroku -v`
+
+
+
+## remoteからherokuを削除
+`git remote rm heroku`
+
+## temoteからoriginを削除
+`git remote rm origin`
+
+
+
+## デプロイするアプリをgitで管理する
+
+`git remote -v`
+で確認
+
+`git add .`
+`git commit -m "heroku set up"`
+
+
+
+
+
+## ログイン
+
+`heroku login`
+=> `login` と打つ。
+  => ブラウザでログインボタンをおす。
+  
+  
+  
+  
+
+## リモートにherokuを準備
+
+`heroku create`
+heroku上にアプリ作成
+
+
+`git remote`
+↓と帰ってくるはず
+`origin`
+`heroku`
+
+
+
+
+## DB追加
+
+`heroku addons:create cleardb:ignite`
+「ClearDB MySQL」というアドオンが「Igniteプラン」で追加される。
+
+
+
+
+## mysql2追加の設定
+
+`heroku config | grep DATABASE_URL`
+DATABASE_URLの取得
+
+
+`heroku config | grep CLEARDB_DATABASE_URL`
+CLEARDB_DATABASE_URLの取得
+
+
+`heroku config:add CLEARDB_DATABASE_URL=`
+`heroku config:add CLEARDB_ONYX_URL=`
+`heroku config:add CLEARDB_TEAL_URL=`
+`heroku config:add DATABASE_URL=`
+=の続きに取得したDATABASE_URLを(mysql2~)追加。
+
+
+`heroku config:add DB_USERNAME=root`
+`heroku config:add DB_PASSWORD=root`
+`heroku config:add DB_PORT='3306'`
+設定の追加コマンド。
+
+
+`heroku config`
+で確認。DATABASE_URLの欄がちゃんとmysql2へと変更になっているか？
+
+
+`heroku run rails db:migrate`
+mysql2へと変更した設定を反映させる。
+
+
+
+
+
+## herokuへとアプリをpush
+`git push heroku master`
+
+
+
+
+## herokuアプリの更新
+`git push heroku masater`
+
+
+
+## heroku再起動
+`heroku restart`
+
+
+
+## herokuアプリSTOP
+`heroku ps:scale web=0`
+
+
+`heroku ps:scale web=1`
+スタート
+
+
+
+## URLへアクセス
+`heroku open`
