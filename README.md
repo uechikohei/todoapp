@@ -198,6 +198,25 @@ mysql2へと変更した設定を反映させる。
 ## URLへアクセス
 `heroku open`
 
+
+
+
+
+# エラー集
+
+## herokuアプリ更新でエラー
+`heroku logs --tail`
+で確認
+`code=H14`
+エラーコード
+
+`heroku ps:scale web=1`
+コマンド実行で解決.
+
+
+
+
+
 ### 参考
 
 herokuデプロイについて
@@ -208,3 +227,15 @@ https://qiita.com/chihiro/items/5c3ff400f6cb99deb945
 
 mysql2追加について
 https://qiita.com/murakami-mm/items/9587e21fc0ed57c803d0
+
+
+
+
+# circle ci 連携
+
+https://circleci.com/ja/
+=> githubでlogin
+   => setup projectで選択しましょう連携するアプリを
+      =>linuxとrubyを選択
+        =>ローカルで`.circleci`フォルダ`config.yml`中身はコピーしたものを用意
+        　 =>
