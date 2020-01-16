@@ -12,13 +12,13 @@
           <%= form_with(model: list, local: true) do |form| %>
           <%= form.text_field :description, type: 'hidden'%>
           <%= form.check_box :completed, :checked => false, :style => 'visibility: hidden'%>
-          <%= form.submit "Uncross", class: 'btn btn-outline-secondary btn-sm'%>
+          <%= form.submit "達成済み", class: 'btn btn-outline-secondary btn-sm'%>
           <% end %>
           </td>
         <td>
           <% link_to 'Show', list %>
           <% link_to 'Edit', edit_list_path(list) %>
-          <center> <%= link_to 'Delete', list, class: 'btn btn-outline-danger btn-sm', method: :delete, data: { confirm: 'Are you sure?' } %></center>
+          <center> <%= link_to '削除', list, class: 'btn btn-outline-danger btn-sm', method: :delete, data: { confirm: 'このタスクを削除しますか？' } %></center>
         </td>
       </tr>
       <% else %>
@@ -26,15 +26,15 @@
           <td><%= link_to list.description, edit_list_path(list) %><% list.description %></td>
           <td>
           <%= form_with(model: list, local: true) do |form| %>
-            <%= form.text_field :description, type: 'hidden'%>
+            <%= form.text_field :description, type: 'hidden' %>
             <%= form.check_box :completed, :checked => true, :style => 'visibility: hidden'%>
-            <%= form.submit "Cross off", class: 'btn btn-outline-secondary btn-sm'%>
+            <%= form.submit "未達成", class: 'btn btn-outline-secondary btn-sm'%>
           <% end %>
           </td>
           <td>
             <% link_to 'Show', list %>
             <% link_to 'Edit', edit_list_path(list) %>
-            <center> <%= link_to 'Delete', list, class: 'btn btn-outline-danger btn-sm', method: :delete, data: { confirm: 'Are you sure?'} %></center>
+            <center> <%= link_to '削除', list, class: 'btn btn-outline-danger btn-sm', method: :delete, data: { confirm: 'このタスクを削除しますか？'} %></center>
           </td>
         </tr>
         <% end %>
@@ -49,5 +49,7 @@
 <br/>
 <br/>
 
-<%= link_to '実行済みのtodoリストを削除', home_trash_em_path, data: { confirm: '完了したtodoリストを削除しますか？'} %>|
-<%= link_to '全てのtodoリストを削除', home_trash_em_all_path, data: { confirm: '全てのtodoリストを削除しますか？'} %>
+<%= link_to '達成済みのtodoリストを削除する', home_trash_em_path, class: 'btn btn-outline-warning btn-lg', data: { confirm: '本当に削除しますか？'} %>
+<br/>
+<br/>
+<%= link_to '全てのtodoリストを削除', home_trash_em_all_path, class: 'btn btn-outline-danger btn-lg', data: { confirm: '本当に全てのtodoリストを削除しますか？'} %>
