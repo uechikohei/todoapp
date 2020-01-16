@@ -57,6 +57,16 @@ app/views/layouts/application.html.erb => `pack_tag`に変更
 
 
 
+
+# push前に変更ごと
+ config/environment/production.rbへ追記。
+ 
+ `  config.assets.compile = true
+  config.assets.initialize_on_precompile = false`
+  
+
+
+
 # herokuへpush(rails6 + mysql2環境)
 
    ### herokuへの登録が必要
