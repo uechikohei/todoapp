@@ -227,3 +227,15 @@ https://qiita.com/chihiro/items/5c3ff400f6cb99deb945
 
 mysql2追加について
 https://qiita.com/murakami-mm/items/9587e21fc0ed57c803d0
+
+
+
+
+# circle ci 連携
+
+https://circleci.com/ja/
+=> githubでlogin
+   => setup projectで選択しましょう連携するアプリを
+      =>linuxとrubyを選択
+        =>ローカルで`.circleci`フォルダ`config.yml`中身はコピーしたものを用意
+        　 =>
