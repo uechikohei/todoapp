@@ -11,13 +11,39 @@ orbs:
 jobs: 
   build: 
     docker: 
-      - image: circleci/ruby:2.6.3-stretch-node
+      - image: circleci/ruby:2.6.5
+    working_directory: ~/todoapp
     steps: 
       - checkout
       - run: 
           name: Which bundler?
           command: bundle -v
       - ruby/bundle-install
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      # runのたびに実行
+      - run:
+          name: install dependencies
+          command: |
+            gem install bundler -v 2.0.2
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+
+      # Database setup
+      - run: bundle exec rails db:create
+      - run: bundle exec rails db:schema:load
+
+      
+
 
 # What to do next? Set up a test job. Please see 
 # https://circleci.com/docs/2.0/configuration-reference/, for more  info on how to get started.
