@@ -33,10 +33,6 @@ jobs:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
-      # Database setup
-      - run: bundle exec rails db:migrate
-      - run: bundle exec rails db:schema:load
-
 
 
 # What to do next? Set up a test job. Please see 
