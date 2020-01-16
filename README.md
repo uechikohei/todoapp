@@ -198,6 +198,25 @@ mysql2へと変更した設定を反映させる。
 ## URLへアクセス
 `heroku open`
 
+
+
+
+
+# エラー集
+
+## herokuアプリ更新でエラー
+`heroku logs --tail`
+で確認
+`code=H14`
+エラーコード
+
+`heroku ps:scale web=1`
+コマンド実行で解決.
+
+
+
+
+
 ### 参考
 
 herokuデプロイについて
