@@ -1,12 +1,13 @@
-<h1>Edit Todo Item</h1>
-<br/>
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <%= render 'form', list: @list %>
+<center>
+  <h1>タスクを編集する</h1>
+  <br/>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <%= render 'form', list: @list %>
+    </div>
   </div>
-</div>
 
-<br/><br/>
+  <br/><br/>
 
-
-<%= link_to 'Back', lists_path %>
+  <%= link_to 'TOPページへ', lists_path, class: 'btn btn-info btn-sm' %>
+</center>
