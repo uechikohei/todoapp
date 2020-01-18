@@ -22,3 +22,5 @@ RUN bundle install
 WORKDIR /myapp
 COPY . /myapp
 
+RUN yarn install --check-files
+RUN bundle exec rails assets:precompile

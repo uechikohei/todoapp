@@ -8,12 +8,11 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:3000" #rails
-      - "3035:3035" #webpack
     tty: true
     stdin_open: true
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     environment:
-      RAILS_ENV: development
+      RAILS_ENV: production
     volumes:
       - .:/myapp
       - bundle:/usr/local/bundle
@@ -27,8 +26,10 @@ services:
     environment:
       MYSQL_HOST: 127.0.0.1
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: myapp_development
+      MYSQL_DATABASE: myapp_production
       MYSQL_USERNAME: root
+    security_opt:
+      - seccomp:unconfined
     ports:
       - "4306:3306"
     volumes:

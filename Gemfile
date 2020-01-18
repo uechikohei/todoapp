@@ -52,3 +52,5 @@ gem 'webpacker'
 
 # apiモードで作成する場合
 # gem 'rack-cors', :require => 'rack/cors'
+
+gem 'dotenv-rails'
