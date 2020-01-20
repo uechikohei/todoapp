@@ -35,6 +35,18 @@ services:
     volumes:
       -  mysql_data:/var/lib/mysql
 
+  nginx:
+    build: nginx/
+    ports:
+      - 80:80
+    volumes:
+      - public-data:/todoapp/public
+      - tmp-data:/todoapp/tmp
+    depends_on:
+      - web
+
 volumes:
   bundle:
   mysql_data:
+  public-data:
+  tmp-data:

@@ -19,6 +19,10 @@ COPY Gemfile Gemfile
 COPY Gemfile.lock Gemfile.lock
 RUN bundle install
 
+# Expose volumes to frontend
+VOLUME /app/public
+VOLUME /app/tmp
+
 WORKDIR /myapp
 COPY . /myapp
 
