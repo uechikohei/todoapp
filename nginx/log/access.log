@@ -7,3 +7,5 @@
 172.23.0.1 - - [21/Jan/2020:06:44:15 +0000] "GET /packs/js/application-d2d7be1433a459f81894.js.map HTTP/1.1" 200 273820 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36"
 172.23.0.1 - - [21/Jan/2020:06:44:25 +0000] "GET / HTTP/1.1" 200 2154 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36"
 172.23.0.1 - - [21/Jan/2020:06:44:25 +0000] "GET /favicon.ico HTTP/1.1" 200 0 "http://localhost/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36"
+106.171.83.83 - - [21/Jan/2020:07:39:30 +0000] "GET / HTTP/1.1" 500 1635 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36"
+106.171.83.83 - - [21/Jan/2020:07:39:31 +0000] "GET /favicon.ico HTTP/1.1" 200 0 "http://18.178.151.50/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36"
