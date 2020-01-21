@@ -36,10 +36,12 @@ services:
       -  mysql_data:/var/lib/mysql
 
   nginx:
-    build: nginx/
+    build:
+      context: nginx/
     ports:
       - 80:80
     volumes:
+      - ./nginx/log:/var/log/nginx
       - public-data:/todoapp/public
       - tmp-data:/todoapp/tmp
     depends_on:
