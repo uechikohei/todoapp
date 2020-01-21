@@ -74,10 +74,6 @@ GEM
     childprocess (3.0.0)
     concurrent-ruby (1.1.5)
     crass (1.0.6)
-    dotenv (2.7.5)
-    dotenv-rails (2.7.5)
-      dotenv (= 2.7.5)
-      railties (>= 3.2, < 6.1)
     erubi (1.9.0)
     ffi (1.11.3)
     globalid (0.4.2)
@@ -199,7 +195,6 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
-  dotenv-rails
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
@@ -218,4 +213,4 @@ RUBY VERSION
    ruby 2.6.5p114
 
 BUNDLED WITH
-   2.1.1
+   2.1.4

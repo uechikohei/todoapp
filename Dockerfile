@@ -1,7 +1,5 @@
 FROM ruby:2.6.5-stretch
 ENV LANG C.UTF-8
-ENV RAILS_ENV production
-
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl apt-transport-https wget && \
@@ -29,4 +27,4 @@ WORKDIR /myapp
 COPY . /myapp
 
 RUN yarn install --check-files
-RUN bundle exec rails assets:precompile
+RUN bundle exec rails assets:precompile RAILS_ENV=production
