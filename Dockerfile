@@ -1,6 +1,13 @@
 FROM ruby:2.6.5-stretch
 ENV LANG C.UTF-8
 
+ENV RAILS_ENV=production
+ENV APP_ROOT /app
+ARG RAILS_MASTER_KEY
+ENV RAILS_MASTER_KEY ${RAILS_MASTER_KEY}
+
+WORKDIR $APP_ROOT
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl apt-transport-https wget && \
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
@@ -15,16 +22,18 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     gem install bundler && \
     rm -rf /var/lib/apt/lists/*
 
-COPY Gemfile Gemfile
-COPY Gemfile.lock Gemfile.lock
+COPY Gemfile $APP_ROOT
+COPY Gemfile.lock $APP_ROOT
 RUN bundle install
+RUN bundle exec rails assets:precompile
 
 # Expose volumes to frontend
-VOLUME /app/public
-VOLUME /app/tmp
+VOLUME $APP_ROOT/public
+VOLUME $APP_ROOT/tmp
 
-WORKDIR /myapp
-COPY . /myapp
+COPY . $APP_ROOT
 
-RUN yarn install --check-files
-RUN bundle exec rails assets:precompile RAILS_ENV=production
+ARG RAILS_MASTER_KEY
+ENV RAILS_MASTER_KEY ${RAILS_MASTER_KEY}
+
+EXPOSE 3000

@@ -2,20 +2,24 @@ version: '3'
 
 services:
 
-  web:
+  app:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3000:3000" #rails
+      - "3000:3000"
     tty: true
     stdin_open: true
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     environment:
       RAILS_ENV: production
+      RAILS_MASTER_KEY: ebcd5febbf1e469c8cdfb57a09aafb8c
     volumes:
-      - .:/myapp
+      - .:/app
       - bundle:/usr/local/bundle
+      - /var/tmp
+      # socketファイルの共有
+      - sockets:/app/tmp/sockets
     depends_on:
       - db
 
@@ -43,12 +47,12 @@ services:
     volumes:
       - ./nginx/log:/var/log/nginx
       - public-data:/todoapp/public
-      - tmp-data:/todoapp/tmp
+      - sockets:/app/tmp/sockets
     depends_on:
-      - web
+      - app
 
 volumes:
   bundle:
   mysql_data:
   public-data:
-  tmp-data:
+  sockets:
