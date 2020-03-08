@@ -1,25 +1,24 @@
 version: '3'
 
 services:
-
   app:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: ./docker/rails/rails_dockerfile_production
     ports:
       - "3000:3000"
-    tty: true
     stdin_open: true
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec puma -C config/puma.rb"
     environment:
       RAILS_ENV: production
       RAILS_MASTER_KEY: ebcd5febbf1e469c8cdfb57a09aafb8c
     volumes:
       - .:/app
-      - bundle:/usr/local/bundle
       - /var/tmp
+      - bundle:/usr/local/bundle
       # socketファイルの共有
       - sockets:/app/tmp/sockets
+    tty: true
     depends_on:
       - db
 
@@ -35,18 +34,19 @@ services:
     security_opt:
       - seccomp:unconfined
     ports:
-      - "4306:3306"
+      - "3306:3306"
     volumes:
       -  mysql_data:/var/lib/mysql
 
   nginx:
     build:
-      context: nginx/
+      context: .
+      dockerfile: ./docker/nginx/nginx_dockerfile_production
     ports:
       - 80:80
     volumes:
       - ./nginx/log:/var/log/nginx
-      - public-data:/todoapp/public
+      - public-data:/app/public
       - sockets:/app/tmp/sockets
     depends_on:
       - app
